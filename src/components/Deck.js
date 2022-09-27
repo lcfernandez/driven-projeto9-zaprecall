@@ -1,10 +1,18 @@
+import logo from "../assets/img/logo.png";
 import styled from "styled-components";
 
 export default function Deck() {
     return (
         <DeckContainer>
-            <Header></Header>
-            <Main></Main>
+            <Header>
+                <img alt="logo" src={logo} />
+                ZapRecall
+            </Header>
+            <Main>
+                <Flashcard>
+                    Flashcard
+                </Flashcard>
+            </Main>
         </DeckContainer>
     );
 }
@@ -12,6 +20,21 @@ export default function Deck() {
 const DeckContainer = styled.div`
     display: flex;
     flex-direction: column;
+`;
+
+const Flashcard = styled.div`
+    width: 300px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    margin: 10px 0px;
+    padding: 10px 10px;
+    cursor: pointer;
+    font-family: 'Recursive', cursive;
 `;
 
 const Header = styled.div`
