@@ -1,17 +1,20 @@
 import Flashcard from './Flashcard';
 import styled from "styled-components";
 
-export default function Main() {
+export default function Main(props) {
     return (
         <Deck>
-            <Flashcard />
-            <Flashcard />
-            <Flashcard />
-            <Flashcard />
-            <Flashcard />
-            <Flashcard />
-            <Flashcard />
-            <Flashcard />
+            {props.deckCards.map(
+                (card) => 
+                    <Flashcard
+                        answer={card.answer}
+                        key={card.id}
+                        question={card.question}
+                        number={card.id}
+                        status="open"
+                        face="answer"
+                    />
+            )}
         </Deck>
     );
 }

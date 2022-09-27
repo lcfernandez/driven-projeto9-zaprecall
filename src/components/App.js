@@ -1,15 +1,16 @@
-import Main from './Main';
+import deckCards from '../assets/deck';
 import Footer from './Footer';
-import GlobalStyle from "./GlobalStyle";
+import GlobalStyle from "../assets/GlobalStyle";
 import Header from './Header';
+import Main from './Main';
 import styled from "styled-components";
 
 export default function App() {
     return (
         <Content>
             <Header />
-            <Main />
-            <Footer />
+            <Main deckCards={deckCards} />
+            <Footer totalCards={deckCards.length}/>
             <GlobalStyle />
         </Content>
     );

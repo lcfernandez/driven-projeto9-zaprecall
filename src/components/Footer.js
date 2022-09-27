@@ -1,7 +1,7 @@
 import Button from "./Button";
 import styled from "styled-components";
 
-export default function Footer() {
+export default function Footer(props) {
     return (
         <FooterContainer>
             <Buttons>
@@ -10,7 +10,7 @@ export default function Footer() {
                 <Button type="zap" text="Zap!" />
             </Buttons>
 
-            0/4 CONCLUÍDOS
+            0/{props.totalCards} CONCLUÍDOS
         </FooterContainer>
     );
 }
@@ -21,19 +21,18 @@ const Buttons = styled.div`
 `;
 
 const FooterContainer = styled.div`
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
     background-color: white;
-    z-index: 1;
-    width: 100%;
-    padding: 14px 10px 24px 10px;
-    font-size: 18px;
+    bottom: 0;
     color: black;
-    position: fixed;
-    text-align: center;
     display: flex;
     flex-direction: column;
+    font-size: 18px;
     gap: 20px;
+    left: 0;
+    padding: 14px 10px 24px 10px;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    width: 100%;
+    z-index: 1;
 `;
