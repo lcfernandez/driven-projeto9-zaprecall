@@ -10,7 +10,28 @@ export default function Deck() {
             </Header>
             <Main>
                 <Flashcard>
-                    Flashcard
+                    Flashcard 1
+                </Flashcard>
+                <Flashcard>
+                    Flashcard 2
+                </Flashcard>
+                <Flashcard>
+                    Flashcard 3
+                </Flashcard>
+                <Flashcard>
+                    Flashcard 4
+                </Flashcard>
+                <Flashcard>
+                    Flashcard 5
+                </Flashcard>
+                <Flashcard>
+                    Flashcard 6
+                </Flashcard>
+                <Flashcard>
+                    Flashcard 7
+                </Flashcard>
+                <Flashcard>
+                    Flashcard 8
                 </Flashcard>
             </Main>
         </DeckContainer>
@@ -20,6 +41,9 @@ export default function Deck() {
 const DeckContainer = styled.div`
     display: flex;
     flex-direction: column;
+    background-color: var(--cor-fundo);
+    height: 100vh;
+    width: 100vw;
 `;
 
 const Flashcard = styled.div`
@@ -38,6 +62,7 @@ const Flashcard = styled.div`
 `;
 
 const Header = styled.div`
+    margin: 24px 0;
     position: fixed;
     height: 80px;
     top: 0;
@@ -51,16 +76,17 @@ const Header = styled.div`
     color: white;
     font-family: "Righteous";
     z-index: 1;
-    background-color: var(--cor-fundo);
 
     img {
+        margin-right: 24px;
         width: 52px;
         height: 60px;
     }
 `;
 
 const Main = styled.div`
-    max-height: 400px;
+    margin: 128px auto 106px auto;
+    max-height: 100vh;
     overflow-y: auto;
 
     &::-webkit-scrollbar {
