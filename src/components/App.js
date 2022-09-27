@@ -1,10 +1,13 @@
+import Deck from './Deck';
+import Footer from './Footer';
 import GlobalStyle from "./GlobalStyle";
 
 export default function App() {
     return (
         <>
-        
-        <GlobalStyle />
+            <Deck></Deck>
+            <Footer></Footer>
+            <GlobalStyle />
         </>
     );
 }
