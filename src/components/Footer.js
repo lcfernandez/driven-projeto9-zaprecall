@@ -3,15 +3,22 @@ import styled from "styled-components";
 export default function Footer() {
     return (
         <FooterContainer>
-            <ErrorButton>Não lembrei</ErrorButton>
-            <AlmostButton>Quase não lembrei</AlmostButton>
-            <ZapButton>Zap!</ZapButton>
+            <ButtonContainer>
+                <ErrorButton>Não lembrei</ErrorButton>
+                <AlmostButton>Quase não lembrei</AlmostButton>
+                <ZapButton>Zap!</ZapButton>
+            </ButtonContainer>
+
+            0/4 CONCLUÍDOS
         </FooterContainer>
     );
 }
 
 const Button = styled.button`
-    width: 100%;
+    border: none;
+    word-wrap: break-word;
+    margin: 0 1%;
+    width: 22%;
     height: 40px;
     background-color: green;
     color: white;
@@ -27,6 +34,11 @@ const Button = styled.button`
         filter: brightness(0.7)
     }
 `;
+
+const ButtonContainer = styled.div`
+    display: flex;
+    justify-content: center;
+`
 
 const ErrorButton = styled(Button)`
     background-color: var(--cor-nao-lembrei);
