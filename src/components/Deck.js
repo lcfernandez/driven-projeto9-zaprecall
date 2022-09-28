@@ -1,25 +1,25 @@
 import Flashcard from './Flashcard';
+
 import styled from "styled-components";
 
-export default function Main(props) {
+export default function Main({deckCards}) {
     return (
-        <Deck>
-            {props.deckCards.map(
+        <DeckContainer>
+            {deckCards.map(
                 (card) => 
                     <Flashcard
                         answer={card.answer}
                         key={card.id}
-                        question={card.question}
                         number={card.id}
-                        status="open"
-                        face="answer"
+                        question={card.question}
+                        status={card.status}
                     />
             )}
-        </Deck>
+        </DeckContainer>
     );
 }
 
-const Deck = styled.div`
+const DeckContainer = styled.div`
     height: calc(100% - 244px);
     margin: 128px auto 0 auto;
     overflow-y: auto;

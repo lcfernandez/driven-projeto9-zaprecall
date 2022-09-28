@@ -1,26 +1,41 @@
-import open from "../assets/img/play-outline-icon.svg";
-import flip from "../assets/img/setinha.png";
+import { useState } from "react";
+
+import flipIcon from "../assets/img/setinha.png";
+import openIcon from "../assets/img/play-outline-icon.svg";
 import styled from "styled-components";
 
-export default function Flashcard(props) {
-    return (
-        <FlashcardContainer></FlashcardContainer>
-        /* if (props.status === "open") {
-            {props.status === "open" ? <FlashcardOpenContainer> : <FlashcardContainer>}
-            {props.status === "open" ? (props.face === "question" ? props.question : props.answer) : `Flashcard ${props.number}`}
-            {props.status === "open" && props.face === "question" ? <Icone alt="Ação" src={props.status === "open" ? flip : open} /> : ""}
-        {props.status === "open" ? </FlashcardOpenContainer> : </FlashcardContainer>}
-        } else {
+export default function Flashcard({answer, number, question, status}) {
+    const [flipped, setFlipped] = useState(false);
+    const [open, setOpen] = useState(false);
 
-        }
-        <>
-            {props.status === "open" ? <FlashcardOpenContainer> : <FlashcardContainer>}
-                {props.status === "open" ? (props.face === "question" ? props.question : props.answer) : `Flashcard ${props.number}`}
-                {props.status === "open" && props.face === "question" ? <Icone alt="Ação" src={props.status === "open" ? flip : open} /> : ""}
-            {props.status === "open" ? </FlashcardOpenContainer> : </FlashcardContainer>}
-        </> */
-    );
-}
+    function flipCard() {
+        setFlipped(true);
+    }
+
+    function openCard() {
+        setOpen(true);
+    }
+
+    if (open) {
+        return (
+            <FlashcardOpenContainer>
+                <div>
+                    {flipped ? answer : question}
+                </div>
+                <div>
+                    {flipped ? "" : <Icone alt="Virar" onClick={flipCard} src={flipIcon} />}
+                </div>
+            </FlashcardOpenContainer>
+        );
+    } else {
+        return (
+            <FlashcardContainer>
+                Flashcard {number}
+                <Icone alt="Abrir" onClick={openCard} src={openIcon} />
+            </FlashcardContainer>
+        );
+    }
+};
 
 const FlashcardContainer = styled.div`
     align-items: center;
@@ -38,40 +53,34 @@ const FlashcardContainer = styled.div`
 `;
 
 const FlashcardOpenContainer = styled(FlashcardContainer)`
-    min-height: 130px;
-    display: flex;
-    flex-direction: column;
     background-color: var(--cor-fundo-card);
     cursor: default;
+    display: flex;
+    flex-direction: column;
+    min-height: 130px;
     padding: 20px 10px;
-`;
+        
+    div:nth-child(1) {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+    }
 
-/*.flashcard.aberto {
-    
-  }
-  
-  .aberto div {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .aberto.resposta div {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .aberto img {
-    cursor: pointer;
-  }*/
+    div:nth-child(2) {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+    }
+`;
 
 const Icone = styled.img`
     color: var(--preto);
-    width: 23px;
+    cursor: pointer;
     height: 23px;
+    width: 23px;
 `;
+
+
 /* .icone,
 img.icone {
   color: var(--preto);
