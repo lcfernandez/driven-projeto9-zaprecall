@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
-export default function Button(props) {
+export default function Button({disabled, text, type}) {
     return (
-        <ButtonContainer type={props.type}>
-            {props.text}
+        <ButtonContainer disabled={disabled} type={type}>
+            {text}
         </ButtonContainer>
     );
 }
 
 const ButtonContainer = styled.button`
     align-items: center;
-    background-color: ${(props) => {
-        switch (props.type) {
+    background-color: ${({type}) => {
+        switch (type) {
             case "error":
                 return "var(--cor-nao-lembrei)";
             case "almost":
@@ -26,7 +26,6 @@ const ButtonContainer = styled.button`
     border: none;
     border-radius: 4px;
     color: white;
-    cursor: pointer;
     display: flex;
     font-family: inherit;
     font-size: 12px;
@@ -36,8 +35,14 @@ const ButtonContainer = styled.button`
     margin: 0 1%;
     width: 24%;
     word-wrap: break-word;
+    ${({disabled}) => {
+        if (!disabled) {
+            return `cursor: pointer;
 
-    &:hover {
-        filter: brightness(0.7)
-    }
+                &:hover {
+                    filter: brightness(0.7)
+                }`
+            ;
+        }
+    }}
 `;

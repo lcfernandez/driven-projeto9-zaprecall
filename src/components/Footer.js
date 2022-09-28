@@ -1,16 +1,17 @@
 import Button from "./Button";
+
 import styled from "styled-components";
 
-export default function Footer(props) {
+export default function Footer({disabledButtons, totalCards}) {
     return (
         <FooterContainer>
             <Buttons>
-                <Button type="error" text="Não lembrei" />
-                <Button type="almost" text="Quase não lembrei" />
-                <Button type="zap" text="Zap!" />
+                <Button disabled={disabledButtons} text="Não lembrei" type="error" />
+                <Button disabled={disabledButtons} text="Quase não lembrei" type="almost" />
+                <Button disabled={disabledButtons} text="Zap!" type="zap" />
             </Buttons>
 
-            0/{props.totalCards} CONCLUÍDOS
+            0/{totalCards} CONCLUÍDOS
         </FooterContainer>
     );
 }

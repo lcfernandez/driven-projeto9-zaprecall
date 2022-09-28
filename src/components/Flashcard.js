@@ -4,16 +4,21 @@ import flipIcon from "../assets/img/setinha.png";
 import openIcon from "../assets/img/play-outline-icon.svg";
 import styled from "styled-components";
 
-export default function Flashcard({answer, number, question, status}) {
+export default function Flashcard({answer, deckCards, disabled, number, question, setDisabledButtons, setDisabledFlashcards, status}) {
     const [flipped, setFlipped] = useState(false);
     const [open, setOpen] = useState(false);
 
     function flipCard() {
-        setFlipped(true);
+        setDisabledButtons(false);
+        setFlipped(true)
     }
 
     function openCard() {
-        setOpen(true);
+        if (!disabled) {
+            const array = deckCards.map(card => card.id).filter(id => id !== number);
+            setDisabledFlashcards(array);
+            setOpen(true);
+        }
     }
 
     if (open) {
@@ -29,7 +34,7 @@ export default function Flashcard({answer, number, question, status}) {
         );
     } else {
         return (
-            <FlashcardContainer>
+            <FlashcardContainer disabled={disabled}>
                 Flashcard {number}
                 <Icone alt="Abrir" onClick={openCard} src={openIcon} />
             </FlashcardContainer>
@@ -42,7 +47,6 @@ const FlashcardContainer = styled.div`
     background-color: white;
     border-radius: 5px;
     color: black;
-    cursor: pointer;
     display: flex;
     font-family: 'Recursive', cursive;
     height: 50px;
@@ -75,9 +79,10 @@ const FlashcardOpenContainer = styled(FlashcardContainer)`
 
 const Icone = styled.img`
     color: var(--preto);
-    cursor: pointer;
     height: 23px;
     width: 23px;
+
+    ${({disabled}) => disabled ? "" : "cursor: pointer;"}
 `;
 
 

@@ -1,4 +1,4 @@
-/* import { useState } from 'react'; */
+import { useState } from "react";
 
 import Footer from './Footer';
 import Header from './Header';
@@ -8,8 +8,6 @@ import deck from '../assets/deck';
 import styled from "styled-components";
 
 export default function ZapRecallMain() {
-    /* const {answeredCards, setAnsweredCards} = useState([]); */
-
     const deckCards = deck.map(
         (card, index) => {
             return {
@@ -21,11 +19,13 @@ export default function ZapRecallMain() {
         }
     );
 
+    const [disabledButtons, setDisabledButtons] = useState(true);
+
     return (
         <Content>
             <Header />
-            <Deck deckCards={deckCards} />
-            <Footer /* answeredCards={answeredCards} */ totalCards={deckCards.length} />
+            <Deck deckCards={deckCards} setDisabledButtons={setDisabledButtons} />
+            <Footer disabledButtons={disabledButtons} totalCards={deckCards.length} />
         </Content>
     );
 }
