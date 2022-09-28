@@ -1,8 +1,19 @@
 import styled from "styled-components";
 
-export default function Button({disabled, text, type}) {
+export default function Button({deckCards, disabled, setDeckCards, setOpen, text, type}) {
+    function evaluate() {
+        deckCards.forEach(card => card.open === true ? statusOpen(card) : "");
+        setDeckCards(deckCards);
+    }
+
+    function statusOpen(obj) {
+        setOpen(false);
+        obj.status = type;
+        obj.open = false;
+    }
+
     return (
-        <ButtonContainer disabled={disabled} type={type}>
+        <ButtonContainer disabled={disabled} onClick={evaluate} type={type}>
             {text}
         </ButtonContainer>
     );

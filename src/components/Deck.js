@@ -4,8 +4,8 @@ import Flashcard from './Flashcard';
 
 import styled from "styled-components";
 
-export default function Main({deckCards, setDisabledButtons}) {
-    const [disabledFlashcards, setDisabledFlashcards] = useState([]);
+export default function Main({deckCards, setDisabledButtons, setOpen}) {
+    const [disabledCards, setDisabledCards] = useState([]);
 
     return (
         <DeckContainer>
@@ -14,12 +14,14 @@ export default function Main({deckCards, setDisabledButtons}) {
                     <Flashcard
                         answer={card.answer}
                         deckCards={deckCards}
-                        disabled={disabledFlashcards.includes(card.id) ? true : false}
+                        disabled={disabledCards.includes(card.id) ? true : false}
                         key={card.id}
                         number={card.id}
+                        open={card.open}
                         question={card.question}
                         setDisabledButtons={setDisabledButtons}
-                        setDisabledFlashcards={setDisabledFlashcards}
+                        setDisabledCards={setDisabledCards}
+                        setOpen={setOpen}
                         status={card.status}
                     />
             )}

@@ -1,13 +1,15 @@
 import { useState } from "react";
 
+import almost from "../assets/img/icone_quase.png";
+import error from "../assets/img/icone_erro.png";
 import flipIcon from "../assets/img/setinha.png";
 import openIcon from "../assets/img/play-outline-icon.svg";
 import styled from "styled-components";
+import zap from "../assets/img/icone_certo.png"; 
 
-export default function Flashcard({answer, deckCards, disabled, number, question, setDisabledButtons, setDisabledFlashcards, status}) {
+export default function Flashcard({answer, deckCards, disabled, number, open, question, setOpen, setDisabledButtons, setDisabledCards, status}) {
     const [flipped, setFlipped] = useState(false);
-    const [open, setOpen] = useState(false);
-
+    
     function flipCard() {
         setDisabledButtons(false);
         setFlipped(true)
@@ -15,9 +17,11 @@ export default function Flashcard({answer, deckCards, disabled, number, question
 
     function openCard() {
         if (!disabled) {
-            const array = deckCards.map(card => card.id).filter(id => id !== number);
-            setDisabledFlashcards(array);
+            const disabledCardsUpdate = deckCards.map(card => card.id).filter(id => id !== number);
+            setDisabledCards(disabledCardsUpdate);
             setOpen(true);
+
+            deckCards.forEach(card => card.id === number ? card.open = true : "");
         }
     }
 
@@ -34,9 +38,13 @@ export default function Flashcard({answer, deckCards, disabled, number, question
         );
     } else {
         return (
-            <FlashcardContainer disabled={disabled}>
+            <FlashcardContainer status={status}>
                 Flashcard {number}
-                <Icone alt="Abrir" onClick={openCard} src={openIcon} />
+                <Icone alt="Abrir"
+                    disabled={disabled}
+                    onClick={openCard}
+                    src={status ? (status === "error" ? error : (status === "almost" ? almost : zap)) : openIcon}
+                />
             </FlashcardContainer>
         );
     }
@@ -46,7 +54,6 @@ const FlashcardContainer = styled.div`
     align-items: center;
     background-color: white;
     border-radius: 5px;
-    color: black;
     display: flex;
     font-family: 'Recursive', cursive;
     height: 50px;
@@ -54,11 +61,26 @@ const FlashcardContainer = styled.div`
     margin: 10px 0px;
     padding: 10px 10px;
     width: 300px;
+    ${({status}) => {
+        switch (status) {
+            case "error":
+                return `color: var(--cor-nao-lembrei);
+                        text-decoration: line-through;`;
+            case "almost":
+                return `color: var(--cor-quase-nao-lembrei);
+                        text-decoration: line-through;`;
+            case "zap":
+                return `color: var(--cor-zap);
+                        text-decoration: line-through;`;
+            default:
+                return "color: black";
+            }
+        }
+    }
 `;
 
 const FlashcardOpenContainer = styled(FlashcardContainer)`
     background-color: var(--cor-fundo-card);
-    cursor: default;
     display: flex;
     flex-direction: column;
     min-height: 130px;
@@ -79,57 +101,7 @@ const FlashcardOpenContainer = styled(FlashcardContainer)`
 
 const Icone = styled.img`
     color: var(--preto);
+    cursor: ${({disabled}) => disabled ? "default;" : "pointer;"}
     height: 23px;
     width: 23px;
-
-    ${({disabled}) => disabled ? "" : "cursor: pointer;"}
 `;
-
-
-/* .icone,
-img.icone {
-  color: var(--preto);
-  width: 23px;
-  height: 23px;
-}
-
-.icone svg {
-  width: 23px;
-  height: 23px;
-} */
-
-
-/* .flashcard.acerto {
-    color: var(--cor-zap);
-    text-decoration: line-through;
-  }
-  
-  .flashcard.help {
-    color: var(--cor-quase-nao-lembrei);
-    text-decoration: line-through;
-  }
-  
-  .flashcard.erro {
-    color: var(--cor-nao-lembrei);
-    text-decoration: line-through;
-  }
-  
-  .action {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    align-items: center;
-    gap: 10px;
-  }
-   
-  .icone .erro {
-    color: var(--nao-lembrei);
-  }
-  
-  .icone .duvida {
-    color: var(--cor-quase-nao-lembrei);
-  }
-  
-  .icone .acerto {
-    color: var(--cor-zap);
-  } */

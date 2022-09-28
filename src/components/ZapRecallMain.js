@@ -1,31 +1,34 @@
 import { useState } from "react";
 
+import Deck from './Deck';
 import Footer from './Footer';
 import Header from './Header';
-import Deck from './Deck';
 
 import deck from '../assets/deck';
 import styled from "styled-components";
 
 export default function ZapRecallMain() {
-    const deckCards = deck.map(
+    const initialDeckCards = deck.map(
         (card, index) => {
             return {
-                id: index + 1,
-                question: card.question,
                 answer: card.answer,
+                id: index + 1,
+                open: false,
+                question: card.question,
                 status: undefined
             };
         }
     );
 
     const [disabledButtons, setDisabledButtons] = useState(true);
+    const [deckCards, setDeckCards] = useState(initialDeckCards);
+    const [open, setOpen] = useState(false);
 
     return (
         <Content>
             <Header />
-            <Deck deckCards={deckCards} setDisabledButtons={setDisabledButtons} />
-            <Footer disabledButtons={disabledButtons} totalCards={deckCards.length} />
+            <Deck deckCards={deckCards} open={open} setDisabledButtons={setDisabledButtons} setOpen={setOpen} />
+            <Footer deckCards={deckCards} disabledButtons={disabledButtons} setDeckCards={setDeckCards} setOpen={setOpen} />
         </Content>
     );
 }

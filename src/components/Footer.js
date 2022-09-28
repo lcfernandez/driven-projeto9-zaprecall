@@ -2,16 +2,22 @@ import Button from "./Button";
 
 import styled from "styled-components";
 
-export default function Footer({disabledButtons, totalCards}) {
+export default function Footer({deckCards, disabledButtons, setDeckCards, setOpen, setStatus}) {
     return (
         <FooterContainer>
             <Buttons>
-                <Button disabled={disabledButtons} text="Não lembrei" type="error" />
-                <Button disabled={disabledButtons} text="Quase não lembrei" type="almost" />
-                <Button disabled={disabledButtons} text="Zap!" type="zap" />
+                <Button deckCards={deckCards} disabled={disabledButtons} setDeckCards={setDeckCards} setOpen={setOpen} setStatus={setStatus}
+                    text="Não lembrei" type="error"
+                />
+                <Button deckCards={deckCards} disabled={disabledButtons} setDeckCards={setDeckCards} setOpen={setOpen} setStatus={setStatus}
+                    text="Quase não lembrei" type="almost"
+                />
+                <Button deckCards={deckCards} disabled={disabledButtons} setDeckCards={setDeckCards} setOpen={setOpen} setStatus={setStatus}
+                    text="Zap!" type="zap"
+                />
             </Buttons>
 
-            0/{totalCards} CONCLUÍDOS
+            {deckCards.filter(card => card.status ? true : false).length}/{deckCards.length} CONCLUÍDOS
         </FooterContainer>
     );
 }
