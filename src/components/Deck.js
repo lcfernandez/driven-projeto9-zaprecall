@@ -1,12 +1,8 @@
-import { useState } from "react";
-
 import Flashcard from './Flashcard';
 
 import styled from "styled-components";
 
 export default function Main({deckCards, setDisabledButtons, setOpen}) {
-    const [disabledCards, setDisabledCards] = useState([]);
-
     return (
         <DeckContainer>
             {deckCards.map(
@@ -14,13 +10,12 @@ export default function Main({deckCards, setDisabledButtons, setOpen}) {
                     <Flashcard
                         answer={card.answer}
                         deckCards={deckCards}
-                        disabled={disabledCards.includes(card.id) ? true : false}
+                        disabled={card.status ? true : false}
                         key={card.id}
                         number={card.id}
                         open={card.open}
                         question={card.question}
                         setDisabledButtons={setDisabledButtons}
-                        setDisabledCards={setDisabledCards}
                         setOpen={setOpen}
                         status={card.status}
                     />

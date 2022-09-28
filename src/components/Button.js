@@ -1,15 +1,16 @@
 import styled from "styled-components";
 
-export default function Button({deckCards, disabled, setDeckCards, setOpen, text, type}) {
+export default function Button({deckCards, disabled, setDeckCards, setDisabledButtons, setOpen, text, type}) {
     function evaluate() {
         deckCards.forEach(card => card.open === true ? statusOpen(card) : "");
         setDeckCards(deckCards);
+        setDisabledButtons(true);
     }
 
-    function statusOpen(obj) {
+    function statusOpen(card) {
         setOpen(false);
-        obj.status = type;
-        obj.open = false;
+        card.status = type;
+        card.open = false;
     }
 
     return (

@@ -7,7 +7,7 @@ import openIcon from "../assets/img/play-outline-icon.svg";
 import styled from "styled-components";
 import zap from "../assets/img/icone_certo.png"; 
 
-export default function Flashcard({answer, deckCards, disabled, number, open, question, setOpen, setDisabledButtons, setDisabledCards, status}) {
+export default function Flashcard({answer, deckCards, disabled, number, open, question, setOpen, setDisabledButtons, status}) {
     const [flipped, setFlipped] = useState(false);
     
     function flipCard() {
@@ -17,8 +17,6 @@ export default function Flashcard({answer, deckCards, disabled, number, open, qu
 
     function openCard() {
         if (!disabled) {
-            const disabledCardsUpdate = deckCards.map(card => card.id).filter(id => id !== number);
-            setDisabledCards(disabledCardsUpdate);
             setOpen(true);
 
             deckCards.forEach(card => card.id === number ? card.open = true : "");

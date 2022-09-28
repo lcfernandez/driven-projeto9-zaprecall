@@ -28,7 +28,7 @@ export default function ZapRecallMain() {
         <Content>
             <Header />
             <Deck deckCards={deckCards} open={open} setDisabledButtons={setDisabledButtons} setOpen={setOpen} />
-            <Footer deckCards={deckCards} disabledButtons={disabledButtons} setDeckCards={setDeckCards} setOpen={setOpen} />
+            <Footer deckCards={deckCards} disabledButtons={disabledButtons} setDeckCards={setDeckCards} setDisabledButtons={setDisabledButtons} setOpen={setOpen} />
         </Content>
     );
 }
