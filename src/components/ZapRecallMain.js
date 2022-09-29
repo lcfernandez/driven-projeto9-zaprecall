@@ -12,6 +12,7 @@ export default function ZapRecallMain() {
         (card, index) => {
             return {
                 answer: card.answer,
+                disabled: false,
                 id: index + 1,
                 open: false,
                 question: card.question,

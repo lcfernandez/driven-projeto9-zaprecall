@@ -12,14 +12,14 @@ export default function Flashcard({answer, deckCards, disabled, number, open, qu
     
     function flipCard() {
         setDisabledButtons(false);
-        setFlipped(true)
+        setFlipped(true);
     }
 
     function openCard() {
         if (!disabled) {
             setOpen(true);
-
             deckCards.forEach(card => card.id === number ? card.open = true : "");
+            deckCards.forEach(card => card.id !== number ? card.disabled = true : "");
         }
     }
 
@@ -52,12 +52,13 @@ const FlashcardContainer = styled.div`
     align-items: center;
     background-color: white;
     border-radius: 5px;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     display: flex;
     font-family: 'Recursive', cursive;
-    height: 50px;
+    height: 65px;
     justify-content: space-between;
-    margin: 10px 0px;
-    padding: 10px 10px;
+    margin: 20px 0px;
+    padding: 10px 15px;
     width: 300px;
     ${({status}) => {
         switch (status) {
@@ -75,6 +76,11 @@ const FlashcardContainer = styled.div`
             }
         }
     }
+
+    img {
+        height: 28px;
+        padding: 3px;
+    }
 `;
 
 const FlashcardOpenContainer = styled(FlashcardContainer)`
@@ -82,24 +88,29 @@ const FlashcardOpenContainer = styled(FlashcardContainer)`
     display: flex;
     flex-direction: column;
     min-height: 130px;
-    padding: 20px 10px;
+    padding: 20px 15px 5px 15px;
+
+    div {
+        display: inherit;
+        width: 100%;
+    }
         
     div:nth-child(1) {
-        display: flex;
         justify-content: flex-start;
-        width: 100%;
+        
     }
 
     div:nth-child(2) {
-        display: flex;
         justify-content: flex-end;
-        width: 100%;
+    }
+
+    img {
+        height: 20px;
     }
 `;
 
 const Icone = styled.img`
     color: var(--preto);
     cursor: ${({disabled}) => disabled ? "default;" : "pointer;"}
-    height: 23px;
-    width: 23px;
+    width: 28px;
 `;

@@ -2,13 +2,14 @@ import styled from "styled-components";
 
 export default function Button({deckCards, disabled, setDeckCards, setDisabledButtons, setOpen, text, type}) {
     function evaluate() {
-        deckCards.forEach(card => card.open === true ? statusOpen(card) : "");
+        deckCards.forEach(card => card.open === true ? statusOpen(card) : (card.status ? "" : card.disabled = false));
         setDeckCards(deckCards);
         setDisabledButtons(true);
     }
 
     function statusOpen(card) {
         setOpen(false);
+        card.disabled = true;
         card.status = type;
         card.open = false;
     }
@@ -45,6 +46,7 @@ const ButtonContainer = styled.button`
     height: 40px;
     justify-content: center;
     margin: 0 1%;
+    padding: 0 6px;
     width: 24%;
     word-wrap: break-word;
     ${({disabled}) => {

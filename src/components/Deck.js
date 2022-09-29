@@ -10,7 +10,7 @@ export default function Main({deckCards, setDisabledButtons, setOpen}) {
                     <Flashcard
                         answer={card.answer}
                         deckCards={deckCards}
-                        disabled={card.status ? true : false}
+                        disabled={card.disabled}
                         key={card.id}
                         number={card.id}
                         open={card.open}

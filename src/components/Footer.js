@@ -48,6 +48,7 @@ const Buttons = styled.div`
 const FooterContainer = styled.div`
     background-color: white;
     bottom: 0;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
     color: black;
     display: flex;
     flex-direction: column;
