@@ -1,10 +1,10 @@
 import GlobalStyle from "../assets/GlobalStyle";
-import ZapRecallMain from "./ZapRecallMain";
+import Main from "./Main";
 
 export default function App() {
     return (
         <>
-            <ZapRecallMain />
+            <Main />
             <GlobalStyle />
         </>
     );

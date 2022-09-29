@@ -69,7 +69,6 @@ const GlobalStyle = createGlobalStyle`
         align-items: center;
         color: var(--preto);
         font-family: 'Recursive', sans-serif;
-        /* font-family: 'Righteous', cursive; */
     }
 `;
 

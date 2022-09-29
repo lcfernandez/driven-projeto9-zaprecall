@@ -21,20 +21,27 @@ export default function ZapRecallMain() {
         }
     );
 
-    const [disabledButtons, setDisabledButtons] = useState(true);
     const [deckCards, setDeckCards] = useState(initialDeckCards);
-    const [open, setOpen] = useState(false);
+    const [disabledButtons, setDisabledButtons] = useState(true);
 
     return (
-        <Content>
+        <MainContainer>
             <Header />
-            <Deck deckCards={deckCards} open={open} setDisabledButtons={setDisabledButtons} setOpen={setOpen} />
-            <Footer deckCards={deckCards} disabledButtons={disabledButtons} setDeckCards={setDeckCards} setDisabledButtons={setDisabledButtons} setOpen={setOpen} />
-        </Content>
+            <Deck
+                deckCards={deckCards}
+                setDisabledButtons={setDisabledButtons}
+            />
+            <Footer
+                deckCards={deckCards}
+                disabledButtons={disabledButtons}
+                setDeckCards={setDeckCards}
+                setDisabledButtons={setDisabledButtons}
+            />
+        </MainContainer>
     );
 }
 
-const Content = styled.div`
+const MainContainer = styled.div`
     background-color: var(--cor-fundo);
     display: flex;
     flex-direction: column;

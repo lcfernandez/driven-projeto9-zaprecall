@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Button({deckCards, disabled, setDeckCards, setDisabledButtons, setOpen, text, type}) {
+export default function Button({deckCards, disabled, setDeckCards, setDisabledButtons, text, type}) {
     function evaluate() {
         deckCards.forEach(card => card.open === true ? statusOpen(card) : (card.status ? "" : card.disabled = false));
         setDeckCards(deckCards);
@@ -8,10 +8,9 @@ export default function Button({deckCards, disabled, setDeckCards, setDisabledBu
     }
 
     function statusOpen(card) {
-        setOpen(false);
         card.disabled = true;
-        card.status = type;
         card.open = false;
+        card.status = type;
     }
 
     return (
@@ -33,9 +32,8 @@ const ButtonContainer = styled.button`
                 return "var(--cor-zap)";
             default:
                 return "green";
-            }
         }
-    };
+    }};
     border: none;
     border-radius: 4px;
     color: white;
@@ -43,7 +41,7 @@ const ButtonContainer = styled.button`
     font-family: inherit;
     font-size: 12px;
     font-weight: 700;
-    height: 40px;
+    height: 36px;
     justify-content: center;
     margin: 0 1%;
     padding: 0 6px;

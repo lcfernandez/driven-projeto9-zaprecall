@@ -2,7 +2,7 @@ import Button from "./Button";
 
 import styled from "styled-components";
 
-export default function Footer({deckCards, disabledButtons, setDeckCards, setDisabledButtons, setOpen, setStatus}) {
+export default function Footer({deckCards, disabledButtons, setDeckCards, setDisabledButtons}) {
     return (
         <FooterContainer>
             <Buttons>
@@ -11,27 +11,24 @@ export default function Footer({deckCards, disabledButtons, setDeckCards, setDis
                     disabled={disabledButtons}
                     setDeckCards={setDeckCards}
                     setDisabledButtons={setDisabledButtons}
-                    setOpen={setOpen}
-                    setStatus={setStatus}
-                    text="Não lembrei" type="error"
+                    text="Não lembrei"
+                    type="error"
                 />
                 <Button
                     deckCards={deckCards}
                     disabled={disabledButtons}
                     setDeckCards={setDeckCards}
                     setDisabledButtons={setDisabledButtons}
-                    setOpen={setOpen}
-                    setStatus={setStatus}
-                    text="Quase não lembrei" type="almost"
+                    text="Quase não lembrei"
+                    type="almost"
                 />
                 <Button
                     deckCards={deckCards}
                     disabled={disabledButtons}
                     setDeckCards={setDeckCards}
                     setDisabledButtons={setDisabledButtons}
-                    setOpen={setOpen}
-                    setStatus={setStatus}
-                    text="Zap!" type="zap"
+                    text="Zap!"
+                    type="zap"
                 />
             </Buttons>
 

@@ -7,7 +7,7 @@ import openIcon from "../assets/img/play-outline-icon.svg";
 import styled from "styled-components";
 import zap from "../assets/img/icone_certo.png"; 
 
-export default function Flashcard({answer, deckCards, disabled, number, open, question, setOpen, setDisabledButtons, status}) {
+export default function Flashcard({answer, deckCards, disabled, number, open, openState, question, setDisabledButtons, setOpenState, status}) {
     const [flipped, setFlipped] = useState(false);
     
     function flipCard() {
@@ -17,9 +17,8 @@ export default function Flashcard({answer, deckCards, disabled, number, open, qu
 
     function openCard() {
         if (!disabled) {
-            setOpen(true);
-            deckCards.forEach(card => card.id === number ? card.open = true : "");
-            deckCards.forEach(card => card.id !== number ? card.disabled = true : "");
+            setOpenState(!openState);
+            deckCards.forEach(card => (card.id === number) ? (card.open = true) : (card.disabled = true));
         }
     }
 
@@ -38,10 +37,11 @@ export default function Flashcard({answer, deckCards, disabled, number, open, qu
         return (
             <FlashcardContainer status={status}>
                 Flashcard {number}
-                <Icone alt="Abrir"
+                <Icone
+                    alt={status ? ((status === "error") ? "Não lembrei" : ((status === "almost") ? "Quase não lembrei" : "Zap!")) : "Abrir"}
                     disabled={disabled}
                     onClick={openCard}
-                    src={status ? (status === "error" ? error : (status === "almost" ? almost : zap)) : openIcon}
+                    src={status ? ((status === "error") ? error : ((status === "almost") ? almost : zap)) : openIcon}
                 />
             </FlashcardContainer>
         );
@@ -73,9 +73,8 @@ const FlashcardContainer = styled.div`
                         text-decoration: line-through;`;
             default:
                 return "color: black";
-            }
         }
-    }
+    }}
 
     img {
         height: 28px;
@@ -111,6 +110,6 @@ const FlashcardOpenContainer = styled(FlashcardContainer)`
 
 const Icone = styled.img`
     color: var(--preto);
-    cursor: ${({disabled}) => disabled ? "default;" : "pointer;"}
     width: 28px;
+    ${({disabled}) => disabled ? "" : "cursor: pointer;"}
 `;
