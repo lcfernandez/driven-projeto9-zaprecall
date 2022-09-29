@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
-export default function Button({deckCards, disabled, setDeckCards, setDisabledButtons, text, type}) {
+export default function Button({deckCards, disabledButtons, setDisabledButtons, text, type}) {
     function evaluate() {
         deckCards.forEach(card => card.open === true ? statusOpen(card) : (card.status ? "" : card.disabled = false));
-        setDeckCards(deckCards);
         setDisabledButtons(true);
     }
 
@@ -14,7 +13,7 @@ export default function Button({deckCards, disabled, setDeckCards, setDisabledBu
     }
 
     return (
-        <ButtonContainer disabled={disabled} onClick={evaluate} type={type}>
+        <ButtonContainer disabled={disabledButtons} onClick={evaluate} type={type}>
             {text}
         </ButtonContainer>
     );

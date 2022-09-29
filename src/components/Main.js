@@ -21,7 +21,7 @@ export default function ZapRecallMain() {
         }
     );
 
-    const [deckCards, setDeckCards] = useState(initialDeckCards);
+    const [deckCards] = useState(initialDeckCards);
     const [disabledButtons, setDisabledButtons] = useState(true);
 
     return (
@@ -34,7 +34,6 @@ export default function ZapRecallMain() {
             <Footer
                 deckCards={deckCards}
                 disabledButtons={disabledButtons}
-                setDeckCards={setDeckCards}
                 setDisabledButtons={setDisabledButtons}
             />
         </MainContainer>
