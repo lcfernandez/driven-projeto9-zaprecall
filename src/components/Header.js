@@ -15,7 +15,7 @@ const HeaderContainer = styled.div`
     background-color: inherit;
     color: white;
     display: flex;
-    font-family: "Righteous";
+    font-family: "Righteous", cursive;
     font-size: 36px;
     height: 128px;
     justify-content: center;
