@@ -29,7 +29,9 @@ export default function Footer({deckCards, disabledButtons, setDisabledButtons})
                 />
             </Buttons>
 
-            {deckCards.filter(card => card.status ? true : false).length}/{deckCards.length} CONCLUÍDOS
+            <span data-identifier="flashcard-counter">
+                {deckCards.filter(card => card.status ? true : false).length}/{deckCards.length} CONCLUÍDOS
+            </span>
         </FooterContainer>
     );
 }

@@ -13,7 +13,12 @@ export default function Button({deckCards, disabledButtons, setDisabledButtons, 
     }
 
     return (
-        <ButtonContainer disabled={disabledButtons} onClick={evaluate} type={type}>
+        <ButtonContainer
+            data-identifier={`${type === "zap" ? type : (type === "almost" ? type + "-" : "") + "forgot"}-btn`}
+            disabled={disabledButtons}
+            onClick={evaluate}
+            type={type}
+        >
             {text}
         </ButtonContainer>
     );

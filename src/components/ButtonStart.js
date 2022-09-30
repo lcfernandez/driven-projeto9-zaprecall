@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function ButtonStart() {
 
     return (
-        <ButtonStartContainer>
+        <ButtonStartContainer data-identifier="start-btn">
             Iniciar Recall!
         </ButtonStartContainer>
     );

@@ -24,21 +24,22 @@ export default function Flashcard({answer, deckCards, disabled, number, open, op
 
     if (open) {
         return (
-            <FlashcardOpenContainer>
-                <div>
+            <FlashcardOpenContainer data-identifier="flashcard">
+                <div data-identifier={`flashcard-${flipped ? "answer" : "question"}`}>
                     {flipped ? answer : question}
                 </div>
                 <div>
-                    {flipped ? "" : <Icone alt="Virar" onClick={flipCard} src={flipIcon} />}
+                    {flipped ? "" : <Icone alt="Virar" data-identifier="flashcard-turn-btn" onClick={flipCard} src={flipIcon} />}
                 </div>
             </FlashcardOpenContainer>
         );
     } else {
         return (
-            <FlashcardContainer status={status}>
-                Flashcard {number}
+            <FlashcardContainer data-identifier="flashcard" status={status}>
+                <span data-identifier="flashcard-index-item">Flashcard {number}</span>
                 <Icone
                     alt={status ? ((status === "error") ? "Não lembrei" : ((status === "almost") ? "Quase não lembrei" : "Zap!")) : "Abrir"}
+                    data-identifier={status ? "flashcard-status" : "flashcard-show-btn"}
                     disabled={disabled}
                     onClick={openCard}
                     src={status ? ((status === "error") ? error : ((status === "almost") ? almost : zap)) : openIcon}
