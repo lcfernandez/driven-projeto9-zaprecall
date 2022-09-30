@@ -2,14 +2,11 @@ import { useState } from "react";
 
 import Button from "./Button";
 
-import almost from "../assets/img/icone_quase.png";
-import error from "../assets/img/icone_erro.png";
 import flipIcon from "../assets/img/setinha.png";
 import openIcon from "../assets/img/play-outline-icon.svg";
 import styled from "styled-components";
-import zap from "../assets/img/icone_certo.png"; 
 
-export default function Flashcard({answer, answeredCards, deckCards, disabled, number, open, openState, question, setAnsweredCards, setOpenState, status}) {
+export default function Flashcard({almost, answer, answeredCards, deckCards, disabled, error, number, open, openState, question, setAnsweredCards, setOpenState, status, zap}) {
     const [flipped, setFlipped] = useState(false);
     
     function openCard() {

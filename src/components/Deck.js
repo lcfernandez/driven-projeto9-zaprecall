@@ -4,7 +4,7 @@ import Flashcard from './Flashcard';
 
 import styled from "styled-components";
 
-export default function Main({answeredCards, deckCards, setAnsweredCards}) {
+export default function Main({almost, answeredCards, deckCards, error, setAnsweredCards, zap}) {
     const [openState, setOpenState] = useState(false);
 
     return (
@@ -12,10 +12,12 @@ export default function Main({answeredCards, deckCards, setAnsweredCards}) {
             {deckCards.map(
                 card => 
                     <Flashcard
+                        almost={almost}
                         answer={card.answer}
                         answeredCards={answeredCards}
                         deckCards={deckCards}
                         disabled={card.disabled}
+                        error={error}
                         key={card.id}
                         number={card.id}
                         open={card.open}
@@ -24,6 +26,7 @@ export default function Main({answeredCards, deckCards, setAnsweredCards}) {
                         setAnsweredCards={setAnsweredCards}
                         setOpenState={setOpenState}
                         status={card.status}
+                        zap={zap}
                     />
             )}
         </DeckContainer>
@@ -31,7 +34,7 @@ export default function Main({answeredCards, deckCards, setAnsweredCards}) {
 }
 
 const DeckContainer = styled.div`
-    height: calc(100% - 198px);
+    height: calc(100% - 208px);
     margin: 128px auto 0 auto;
     overflow-y: auto;
 
