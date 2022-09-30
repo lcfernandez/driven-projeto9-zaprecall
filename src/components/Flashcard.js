@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import Button from "./Button";
+
 import almost from "../assets/img/icone_quase.png";
 import error from "../assets/img/icone_erro.png";
 import flipIcon from "../assets/img/setinha.png";
@@ -7,14 +9,9 @@ import openIcon from "../assets/img/play-outline-icon.svg";
 import styled from "styled-components";
 import zap from "../assets/img/icone_certo.png"; 
 
-export default function Flashcard({answer, deckCards, disabled, number, open, openState, question, setDisabledButtons, setOpenState, status}) {
+export default function Flashcard({answer, answeredCards, deckCards, disabled, number, open, openState, question, setAnsweredCards, setOpenState, status}) {
     const [flipped, setFlipped] = useState(false);
     
-    function flipCard() {
-        setDisabledButtons(false);
-        setFlipped(true);
-    }
-
     function openCard() {
         if (!disabled) {
             setOpenState(!openState);
@@ -24,19 +21,47 @@ export default function Flashcard({answer, deckCards, disabled, number, open, op
 
     if (open) {
         return (
-            <FlashcardOpenContainer data-identifier="flashcard">
+            <FlashcardOpenContainer data-identifier="flashcard" flipped={flipped}>
                 <div data-identifier={`flashcard-${flipped ? "answer" : "question"}`}>
                     {flipped ? answer : question}
                 </div>
                 <div>
-                    {flipped ? "" : <Icone alt="Virar" data-identifier="flashcard-turn-btn" onClick={flipCard} src={flipIcon} />}
+                    {flipped ?
+                        <>
+                            <Button
+                                answeredCards={answeredCards}
+                                deckCards={deckCards}
+                                setAnsweredCards={setAnsweredCards}
+                                setOpenState={setOpenState}
+                                text="Não lembrei"
+                                type="error"
+                            />
+                            <Button
+                                answeredCards={answeredCards}
+                                deckCards={deckCards}
+                                setAnsweredCards={setAnsweredCards}
+                                setOpenState={setOpenState}
+                                text="Quase não lembrei"
+                                type="almost"
+                            />
+                            <Button
+                                answeredCards={answeredCards}
+                                deckCards={deckCards}
+                                setAnsweredCards={setAnsweredCards}
+                                setOpenState={setOpenState}
+                                text="Zap!"
+                                type="zap"
+                            />
+                        </>
+                        : <Icone alt="Virar" data-identifier="flashcard-turn-btn" onClick={() => setFlipped(true)} src={flipIcon} />
+                    }
                 </div>
             </FlashcardOpenContainer>
         );
     } else {
         return (
             <FlashcardContainer data-identifier="flashcard" status={status}>
-                <span data-identifier="flashcard-index-item">Flashcard {number}</span>
+                <span data-identifier="flashcard-index-item">Pergunta {number}</span>
                 <Icone
                     alt={status ? ((status === "error") ? "Não lembrei" : ((status === "almost") ? "Quase não lembrei" : "Zap!")) : "Abrir"}
                     data-identifier={status ? "flashcard-status" : "flashcard-show-btn"}
@@ -97,11 +122,10 @@ const FlashcardOpenContainer = styled(FlashcardContainer)`
         
     div:nth-child(1) {
         justify-content: flex-start;
-        
     }
 
     div:nth-child(2) {
-        justify-content: flex-end;
+        justify-content: ${({flipped}) => flipped ? "space-between" : "flex-end"};
     }
 
     img {

@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
-export default function Button({deckCards, disabledButtons, setDisabledButtons, text, type}) {
+export default function Button({answeredCards, deckCards, setAnsweredCards, setOpenState, text, type}) {
     function evaluate() {
         deckCards.forEach(card => card.open === true ? statusOpen(card) : (card.status ? "" : card.disabled = false));
-        setDisabledButtons(true);
+        setAnsweredCards(answeredCards + 1);
+        setOpenState(false);
     }
 
     function statusOpen(card) {
@@ -15,7 +16,6 @@ export default function Button({deckCards, disabledButtons, setDisabledButtons, 
     return (
         <ButtonContainer
             data-identifier={`${type === "zap" ? type : (type === "almost" ? type + "-" : "") + "forgot"}-btn`}
-            disabled={disabledButtons}
             onClick={evaluate}
             type={type}
         >
@@ -41,24 +41,17 @@ const ButtonContainer = styled.button`
     border: none;
     border-radius: 4px;
     color: white;
+    cursor: pointer;
     display: flex;
     font-family: inherit;
     font-size: 12px;
     font-weight: 700;
     height: 36px;
     justify-content: center;
-    margin: 0 1%;
     padding: 0 6px;
-    width: 24%;
+    width: 85px;
     word-wrap: break-word;
-    ${({disabled}) => {
-        if (!disabled) {
-            return `cursor: pointer;
-
-                &:hover {
-                    filter: brightness(0.7)
-                }`
-            ;
-        }
-    }}
+    &:hover {
+        filter: brightness(0.7)
+    }
 `;

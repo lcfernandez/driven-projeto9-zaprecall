@@ -4,7 +4,7 @@ import Flashcard from './Flashcard';
 
 import styled from "styled-components";
 
-export default function Main({deckCards, setDisabledButtons}) {
+export default function Main({answeredCards, deckCards, setAnsweredCards}) {
     const [openState, setOpenState] = useState(false);
 
     return (
@@ -13,6 +13,7 @@ export default function Main({deckCards, setDisabledButtons}) {
                 card => 
                     <Flashcard
                         answer={card.answer}
+                        answeredCards={answeredCards}
                         deckCards={deckCards}
                         disabled={card.disabled}
                         key={card.id}
@@ -20,7 +21,7 @@ export default function Main({deckCards, setDisabledButtons}) {
                         open={card.open}
                         openState={openState}
                         question={card.question}
-                        setDisabledButtons={setDisabledButtons}
+                        setAnsweredCards={setAnsweredCards}
                         setOpenState={setOpenState}
                         status={card.status}
                     />
@@ -30,7 +31,7 @@ export default function Main({deckCards, setDisabledButtons}) {
 }
 
 const DeckContainer = styled.div`
-    height: calc(100% - 240px);
+    height: calc(100% - 198px);
     margin: 128px auto 0 auto;
     overflow-y: auto;
 

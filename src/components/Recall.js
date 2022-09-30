@@ -21,26 +21,27 @@ export default function Recall() {
         }
     );
 
+    const [answeredCards, setAnsweredCards] = useState(0);
     const [deckCards] = useState(initialDeckCards);
-    const [disabledButtons, setDisabledButtons] = useState(true);
 
     return (
         <RecallContainer>
             <Header />
             <Deck
+                answeredCards={answeredCards}
                 deckCards={deckCards}
-                setDisabledButtons={setDisabledButtons}
+                setAnsweredCards={setAnsweredCards}
             />
             <Footer
+                answeredCards={answeredCards}
                 deckCards={deckCards}
-                disabledButtons={disabledButtons}
-                setDisabledButtons={setDisabledButtons}
             />
         </RecallContainer>
     );
 }
 
 const RecallContainer = styled.div`
+    background-color: inherit;
     display: flex;
     flex-direction: column;
     height: 100vh;
