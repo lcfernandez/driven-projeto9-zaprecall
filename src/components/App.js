@@ -1,20 +1,23 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useState } from "react";
 
 import GlobalStyle from "../assets/GlobalStyle";
 import Main from './Main';
-import Recall from './Recall';
 import Welcome from './Welcome';
 
+import styled from "styled-components";
+
 export default function App() {
+    const [start, setStart] = useState(false);
+
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Main />}>
-                    <Route index element={<Welcome />} />
-                    <Route path="recall" element={<Recall />} />
-                </Route>
-            </Routes>
+        <AppContainer>
+            {start ? <Main /> : <Welcome setStart={setStart} />};
+
             <GlobalStyle />
-        </BrowserRouter>
+        </AppContainer>
     );
 }
+
+const AppContainer = styled.div`
+    background-color: var(--cor-fundo);
+`

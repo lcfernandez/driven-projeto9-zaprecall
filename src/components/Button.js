@@ -3,7 +3,6 @@ import styled from "styled-components";
 export default function Button({answeredCards, deckCards, setAnsweredCards, setOpenState, text, type}) {
     function evaluate() {
         deckCards.forEach(card => card.open === true ? statusOpen(card) : (card.status ? "" : card.disabled = false));
-        setAnsweredCards(answeredCards + 1);
         setOpenState(false);
     }
 
@@ -11,6 +10,7 @@ export default function Button({answeredCards, deckCards, setAnsweredCards, setO
         card.disabled = true;
         card.open = false;
         card.status = type;
+        setAnsweredCards([...answeredCards,{id: card.id, status: card.status}]);
     }
 
     return (

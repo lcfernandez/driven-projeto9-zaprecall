@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export default function ButtonStart() {
+export default function ButtonStart({setStart}) {
 
     return (
-        <ButtonStartContainer data-identifier="start-btn">
+        <ButtonStartContainer data-identifier="start-btn" onClick={() => setStart(true)}>
             Iniciar Recall!
         </ButtonStartContainer>
     );

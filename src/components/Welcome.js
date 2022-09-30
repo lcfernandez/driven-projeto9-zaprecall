@@ -1,19 +1,16 @@
-import { Link, Outlet } from "react-router-dom";
-
 import ButtonStart from "./ButtonStart";
 
 import logo from "../assets/img/logo.png";
 import styled from "styled-components";
 
-export default function Welcome() {
+export default function Welcome({setStart}) {
     return (
         <WelcomeContainer>
             <Content>
                 <img alt="Logo" src={logo} />
                 <div>ZapRecall</div>
-                <Link to="/recall"><ButtonStart /></Link>
+                <ButtonStart setStart={setStart} />
             </Content>
-            <Outlet />
         </WelcomeContainer>
     );
 }

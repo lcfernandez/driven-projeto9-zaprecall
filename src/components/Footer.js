@@ -4,14 +4,14 @@ export default function Footer({almost, answeredCards, deckCards, error, zap}) {
     return (
         <FooterContainer>
             <div data-identifier="flashcard-counter">
-                {answeredCards}/{deckCards.length} CONCLUÍDOS
+                {answeredCards.length}/{deckCards.length} CONCLUÍDOS
             </div>
             <div>
-                {deckCards.map(
+                {answeredCards.map(
                     card => card.status ?
                         <Icone
                             alt={card.status === "error" ? "Não lembrei" : ((card.status === "almost") ? "Quase não lembrei" : "Zap!")}
-                            data-identifier="flashcard-status"
+                            key={card.id}
                             src={
                                 (card.status === "error") ? error : ((card.status === "almost") ? almost : zap)
                             }
