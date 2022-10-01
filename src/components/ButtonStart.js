@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
-export default function ButtonStart({setStart}) {
-
+export default function ButtonStart({deck, setStart}) {
     return (
-        <ButtonStartContainer data-identifier="start-btn" onClick={() => setStart(true)}>
+        <ButtonStartContainer data-identifier="start-btn" onClick={
+            () => deck ? setStart(true) : alert("Escolha um deck!")
+        }>
             Iniciar Recall!
         </ButtonStartContainer>
     );

@@ -5,13 +5,13 @@ import Footer from './Footer';
 import Header from './Header';
 
 import almost from "../assets/img/icone_quase.png";
-import deck from '../assets/deck';
+import decks from '../assets/decks';
 import error from "../assets/img/icone_erro.png";
 import styled from "styled-components";
 import zap from "../assets/img/icone_certo.png"; 
 
-export default function Recall() {
-    const initialDeckCards = deck.map(
+export default function Main({deck}) {
+    const initialDeckCards = decks[deck].cards.map(
         (card, index) => {
             return {
                 answer: card.answer,
@@ -23,12 +23,12 @@ export default function Recall() {
             };
         }
     );
-
+    
     const [answeredCards, setAnsweredCards] = useState([]);
     const [deckCards] = useState(initialDeckCards);
 
     return (
-        <RecallContainer>
+        <MainContainer>
             <Header />
             <Deck
                 almost={almost}
@@ -45,14 +45,12 @@ export default function Recall() {
                 error={error}
                 zap={zap}
             />
-        </RecallContainer>
+        </MainContainer>
     );
 }
 
-const RecallContainer = styled.div`
+const MainContainer = styled.div`
     background-color: inherit;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 100vw;
 `;

@@ -8,10 +8,11 @@ import styled from "styled-components";
 
 export default function App() {
     const [start, setStart] = useState(false);
+    const [deck, setDeck] = useState(undefined);
 
     return (
         <AppContainer>
-            {start ? <Main /> : <Welcome setStart={setStart} />};
+            {start ? <Main deck={deck} /> : <Welcome deck={deck} setDeck={setDeck} setStart={setStart} />}
 
             <GlobalStyle />
         </AppContainer>
@@ -20,4 +21,6 @@ export default function App() {
 
 const AppContainer = styled.div`
     background-color: var(--cor-fundo);
+    height: 100vh;
+    width: 100vw;
 `

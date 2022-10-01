@@ -35,7 +35,7 @@ export default function Main({almost, answeredCards, deckCards, error, setAnswer
 
 const DeckContainer = styled.div`
     height: calc(100% - 208px);
-    margin: 128px auto 0 auto;
+    margin: 128px auto 80px auto;
     overflow-y: auto;
 
     &::-webkit-scrollbar {
