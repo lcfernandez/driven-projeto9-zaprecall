@@ -77,15 +77,15 @@ const decks = [
                 answer: "Parênteses, colchetes e chaves"
             },
             {
-                question: "Qual a 1 prioridade em operações, nas expressões numéricas?",
+                question: "Qual a 1ª prioridade em operações, nas expressões numéricas?",
                 answer: "Potênciação ou radiciação"
             },
             {
-                question: "Qual a 2 prioridade em operações, nas expressões numéricas?",
+                question: "Qual a 2ª prioridade em operações, nas expressões numéricas?",
                 answer: "Multiplicação ou divisão"
             },
             {
-                question: "Qual a 3 prioridade em operações, nas expressões numéricas?",
+                question: "Qual a 3ª prioridade em operações, nas expressões numéricas?",
                 answer: "Adição ou subtração"
             },
             {

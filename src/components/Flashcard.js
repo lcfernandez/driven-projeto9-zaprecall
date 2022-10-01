@@ -78,6 +78,7 @@ const FlashcardContainer = styled.div`
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     display: flex;
     font-family: 'Recursive', cursive;
+    font-weight: 700;
     height: 65px;
     justify-content: space-between;
     margin: 20px 0px;
@@ -109,7 +110,9 @@ const FlashcardOpenContainer = styled(FlashcardContainer)`
     background-color: var(--cor-fundo-card);
     display: flex;
     flex-direction: column;
-    min-height: 130px;
+    font-size: 18px;
+    font-weight: 400;
+    height: 140px;
     padding: 20px 15px 5px 15px;
 
     div {
