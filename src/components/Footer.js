@@ -44,7 +44,7 @@ const FooterContainer = styled.div`
     display: flex;
     flex-direction: column;
     font-size: 18px;
-    height: 126px;
+    height: 110px;
     justify-content: center;
     left: 0;
     position: fixed;

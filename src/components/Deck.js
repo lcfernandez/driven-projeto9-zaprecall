@@ -34,11 +34,11 @@ export default function Main({almost, answeredCards, deckCards, error, setAnswer
 }
 
 const DeckContainer = styled.div`
-    height: calc(100% - 254px);
-    margin: 128px auto 126px auto;
+    height: calc(100% - 238px);
+    margin: 128px auto 110px auto;
     overflow-y: auto;
 
-    &::-webkit-scrollbar {
+    ::-webkit-scrollbar {
         display: none;
     }
 `;

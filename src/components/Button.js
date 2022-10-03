@@ -51,7 +51,8 @@ const ButtonContainer = styled.button`
     padding: 0 6px;
     width: 85px;
     word-wrap: break-word;
-    &:hover {
+    
+    :hover {
         filter: brightness(0.7)
     }
 `;
