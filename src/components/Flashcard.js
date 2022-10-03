@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import Button from "./Button";
 
+import buttons from "../assets/buttons";
 import flipIcon from "../assets/img/setinha.png";
 import openIcon from "../assets/img/play-outline-icon.svg";
 import styled from "styled-components";
@@ -41,30 +42,17 @@ export default function Flashcard(props) {
                 <div>
                     {flipped ?
                         <>
-                            <Button
-                                answeredCards={answeredCards}
-                                deckCards={deckCards}
-                                setAnsweredCards={setAnsweredCards}
-                                setOpenState={setOpenState}
-                                text="Não lembrei"
-                                type="error"
-                            />
-                            <Button
-                                answeredCards={answeredCards}
-                                deckCards={deckCards}
-                                setAnsweredCards={setAnsweredCards}
-                                setOpenState={setOpenState}
-                                text="Quase não lembrei"
-                                type="almost"
-                            />
-                            <Button
-                                answeredCards={answeredCards}
-                                deckCards={deckCards}
-                                setAnsweredCards={setAnsweredCards}
-                                setOpenState={setOpenState}
-                                text="Zap!"
-                                type="zap"
-                            />
+                            {buttons.map((button, index) =>
+                                <Button
+                                    answeredCards={answeredCards}
+                                    deckCards={deckCards}
+                                    key={index}
+                                    setAnsweredCards={setAnsweredCards}
+                                    setOpenState={setOpenState}
+                                    text={button.text}
+                                    type={button.type}
+                                />
+                            )}
                         </>
                         : <Icone alt="Virar" data-identifier="flashcard-turn-btn" onClick={() => setFlipped(true)} src={flipIcon} />
                     }

@@ -1,7 +1,6 @@
 import ButtonStart from "./ButtonStart";
 
-import arrowBlack from "../assets/img/arrow-black.png";
-import arrowGray from "../assets/img/arrow-gray.png";
+import arrow from "../assets/img/arrow.png";
 import decks from "../assets/decks";
 import logo from "../assets/img/logo.png";
 import styled from "styled-components";
@@ -21,8 +20,7 @@ export default function Welcome({deck, goal, setDeck, setGoal, setStart}) {
                         placeholder="Defina sua meta de zaps..."
                     />
                     : <DeckSelector
-                        arrowBlack={arrowBlack}
-                        arrowGray={arrowGray}
+                        arrow={arrow}
                         data-identifier="deck-selector"
                         defaultValue=""
                         onChange={(e) => setDeck(e.target.value)}
@@ -70,7 +68,6 @@ const Content = styled.div`
 `;
 
 const DeckSelector = styled.select`
-    background: #ffffff url(${arrowBlack}) no-repeat 95% 50%;
     border: none;
     border-radius: 5px;
     font-family: 'Roboto', sans-serif;
@@ -88,7 +85,7 @@ const DeckSelector = styled.select`
     }
 
     :invalid {
-        background: #ffffff url(${arrowGray}) no-repeat 95% 50%;
+        background: #ffffff url(${arrow}) no-repeat 95% 50%;
         color: #adadad;
     }
 
