@@ -1,11 +1,23 @@
 import styled from "styled-components";
 
-export default function ButtonStart({goal, setStart}) {
+export default function ButtonStart({deck, decks, goal, max, setStart}) {
+    function checkGoal() {
+        if (isNaN(goal)) {
+            alert("Digite apenas números!");
+        } else if (goal < 1) {
+            alert("O mínimo de Zaps possível é 1!");
+        } else if (goal > decks[deck].cards.length) {
+            alert("O número de Zaps é maior que o de questões!");
+        } else {
+            setStart(true);
+        }
+    }
+
     return (
         <ButtonStartContainer
             data-identifier="start-btn"
             disabled={goal ? "" : true}
-            onClick={() => setStart(true)}>
+            onClick={checkGoal}>
             Iniciar Recall!
         </ButtonStartContainer>
     );

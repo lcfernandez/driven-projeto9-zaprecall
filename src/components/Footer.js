@@ -1,3 +1,5 @@
+import ZapGoalResult from "./ZapGoalResult";
+
 import party from "../assets/img/party.png";
 import sad from "../assets/img/sad.png";
 import styled from "styled-components";
@@ -7,9 +9,10 @@ export default function Footer({almost, answeredCards, deckCards, error, goal, z
         <FooterContainer>
             <div>
                 {answeredCards.length === deckCards.length ?
-                    <img alt="" src={
-                        (answeredCards.filter(card => card.status === "zap").length >= goal ? party : sad)
-                    } />
+                    <ZapGoalResult 
+                        phrase={answeredCards.filter(card => card.status === "zap").length >= goal ? "Parabéns" : "Putz"}
+                        src={answeredCards.filter(card => card.status === "zap").length >= goal ? party : sad}
+                    />
                 : ""}
             </div>
             <div data-identifier="flashcard-counter">
@@ -18,7 +21,7 @@ export default function Footer({almost, answeredCards, deckCards, error, goal, z
             <div>
                 {answeredCards.map(
                     card => card.status ?
-                        <Icone
+                        <img
                             alt={card.status === "error" ? "Não lembrei" : ((card.status === "almost") ? "Quase não lembrei" : "Zap!")}
                             key={card.id}
                             src={
@@ -52,8 +55,13 @@ const FooterContainer = styled.div`
         height: 22px;
         margin: 3px 0;
     }
-`;
 
+    img {
+        margin: 0 3px;
+    }
+`;
+/* 
 const Icone = styled.img`
     margin: 0 2px;
 `;
+ */

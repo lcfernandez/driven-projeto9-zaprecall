@@ -41,12 +41,12 @@ export default function Welcome({deck, goal, setDeck, setGoal, setStart}) {
                         {decks.map(
                             (deck, index) =>
                                 <option key={index} value={index}>
-                                    {deck.name}
+                                    {deck.name} - {deck.cards.length} questões
                                 </option>
                         )}
                     </DeckSelector>
                 }
-                <ButtonStart goal={goal} setStart={setStart} />
+                <ButtonStart deck={deck} decks={decks} goal={goal} setStart={setStart} />
             </Content>
         </WelcomeContainer>
     );
