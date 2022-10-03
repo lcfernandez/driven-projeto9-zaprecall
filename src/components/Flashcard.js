@@ -76,6 +76,7 @@ const FlashcardContainer = styled.div`
     background-color: white;
     border-radius: 5px;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+    color: var(--preto);
     display: flex;
     font-family: 'Recursive', cursive;
     font-weight: 700;
@@ -134,7 +135,6 @@ const FlashcardOpenContainer = styled(FlashcardContainer)`
 `;
 
 const Icone = styled.img`
-    color: var(--preto);
     width: 28px;
     ${({disabled}) => disabled ? "" : "cursor: pointer;"}
 `;

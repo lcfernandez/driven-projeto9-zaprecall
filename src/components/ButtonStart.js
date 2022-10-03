@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export default function ButtonStart({deck, decks, goal, max, setStart}) {
+export default function ButtonStart({deck, decks, goal, setStart}) {
     function checkGoal() {
-        if (isNaN(goal)) {
-            alert("Digite apenas números!");
-        } else if (goal < 1) {
+        if (goal < 1) {
             alert("O mínimo de Zaps possível é 1!");
         } else if (goal > decks[deck].cards.length) {
             alert("O número de Zaps é maior que o de questões!");
+        } else if (goal.match(/[^0-9]/g, '')) {
+            alert("Digite apenas números inteiros!");
         } else {
             setStart(true);
         }
