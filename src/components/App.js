@@ -7,12 +7,13 @@ import Welcome from './Welcome';
 import styled from "styled-components";
 
 export default function App() {
-    const [start, setStart] = useState(false);
     const [deck, setDeck] = useState(undefined);
+    const [goal, setGoal] = useState(undefined);
+    const [start, setStart] = useState(false);
 
     return (
         <AppContainer>
-            {start ? <Main deck={deck} /> : <Welcome deck={deck} setDeck={setDeck} setStart={setStart} />}
+            {start ? <Main deck={deck} goal={goal} /> : <Welcome deck={deck} goal={goal} setDeck={setDeck} setGoal={setGoal} setStart={setStart} />}
 
             <GlobalStyle />
         </AppContainer>

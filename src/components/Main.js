@@ -10,7 +10,7 @@ import error from "../assets/img/icone_erro.png";
 import styled from "styled-components";
 import zap from "../assets/img/icone_certo.png"; 
 
-export default function Main({deck}) {
+export default function Main({deck, goal}) {
     const initialDeckCards = decks[deck].cards.map(
         (card, index) => {
             return {
@@ -23,7 +23,7 @@ export default function Main({deck}) {
             };
         }
     );
-    
+
     const [answeredCards, setAnsweredCards] = useState([]);
     const [deckCards] = useState(initialDeckCards);
 
@@ -43,6 +43,7 @@ export default function Main({deck}) {
                 answeredCards={answeredCards}
                 deckCards={deckCards}
                 error={error}
+                goal={goal}
                 zap={zap}
             />
         </MainContainer>

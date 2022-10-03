@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
-export default function ButtonStart({deck, setStart}) {
+export default function ButtonStart({goal, setStart}) {
     return (
-        <ButtonStartContainer data-identifier="start-btn" onClick={
-            () => deck ? setStart(true) : alert("Escolha um deck!")
-        }>
+        <ButtonStartContainer
+            data-identifier="start-btn"
+            disabled={goal ? "" : true}
+            onClick={() => setStart(true)}>
             Iniciar Recall!
         </ButtonStartContainer>
     );
@@ -24,4 +25,10 @@ const ButtonStartContainer = styled.button`
     line-height: 22px;
     margin: 10px 0px;
     width: 246px;
+
+    :disabled {
+        background-color: #e8e8e8;
+        border: none;
+        color: #c0c0c0;
+    }
 `;
