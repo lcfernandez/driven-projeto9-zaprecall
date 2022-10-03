@@ -60,8 +60,3 @@ const FooterContainer = styled.div`
         margin: 0 3px;
     }
 `;
-/* 
-const Icone = styled.img`
-    margin: 0 2px;
-`;
- */

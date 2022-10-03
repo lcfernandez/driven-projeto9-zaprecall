@@ -13,7 +13,15 @@ export default function App() {
 
     return (
         <AppContainer>
-            {start ? <Main deck={deck} goal={goal} /> : <Welcome deck={deck} goal={goal} setDeck={setDeck} setGoal={setGoal} setStart={setStart} />}
+            {start ? <Main deck={deck} goal={goal} /> :
+                <Welcome
+                    deck={deck}
+                    goal={goal}
+                    setDeck={setDeck}
+                    setGoal={setGoal}
+                    setStart={setStart}
+                />
+            }
 
             <GlobalStyle />
         </AppContainer>

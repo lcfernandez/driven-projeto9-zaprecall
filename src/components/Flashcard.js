@@ -6,7 +6,23 @@ import flipIcon from "../assets/img/setinha.png";
 import openIcon from "../assets/img/play-outline-icon.svg";
 import styled from "styled-components";
 
-export default function Flashcard({almost, answer, answeredCards, deckCards, disabled, error, number, open, openState, question, setAnsweredCards, setOpenState, status, zap}) {
+export default function Flashcard(props) {
+    const {almost,
+        answer,
+        answeredCards,
+        deckCards,
+        disabled,
+        error,
+        number,
+        open,
+        openState,
+        question,
+        setAnsweredCards,
+        setOpenState,
+        status,
+        zap}
+    = props;
+
     const [flipped, setFlipped] = useState(false);
     
     function openCard() {
