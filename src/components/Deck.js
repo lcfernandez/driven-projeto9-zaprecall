@@ -18,8 +18,8 @@ export default function Main({almost, answeredCards, deckCards, error, setAnswer
                         deckCards={deckCards}
                         disabled={card.disabled}
                         error={error}
+                        id={card.id}
                         key={card.id}
-                        number={card.id}
                         open={card.open}
                         openState={openState}
                         question={card.question}

@@ -13,8 +13,8 @@ export default function Flashcard(props) {
         answeredCards,
         deckCards,
         disabled,
+        id,
         error,
-        number,
         open,
         openState,
         question,
@@ -29,7 +29,7 @@ export default function Flashcard(props) {
     function openCard() {
         if (!disabled) {
             setOpenState(!openState);
-            deckCards.forEach(card => (card.id === number) ? (card.open = true) : (card.disabled = true));
+            deckCards.forEach(card => (card.id === id) ? (card.open = true) : (card.disabled = true));
         }
     }
 
@@ -46,6 +46,7 @@ export default function Flashcard(props) {
                                 <Button
                                     answeredCards={answeredCards}
                                     deckCards={deckCards}
+                                    id={id}
                                     key={index}
                                     setAnsweredCards={setAnsweredCards}
                                     setOpenState={setOpenState}
@@ -67,7 +68,7 @@ export default function Flashcard(props) {
                 onClick={openCard}
                 status={status}
             >
-                <span data-identifier="flashcard-index-item">Pergunta {number}</span>
+                <span data-identifier="flashcard-index-item">Pergunta {id}</span>
                 <Icone
                     alt={status ? ((status === "error") ? "Não lembrei" : ((status === "almost") ? "Quase não lembrei" : "Zap!")) : "Abrir"}
                     data-identifier={status ? "flashcard-status" : "flashcard-show-btn"}
