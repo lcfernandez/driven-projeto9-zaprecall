@@ -57,13 +57,16 @@ export default function Flashcard({almost, answer, answeredCards, deckCards, dis
         );
     } else {
         return (
-            <FlashcardContainer data-identifier="flashcard" status={status}>
+            <FlashcardContainer
+                data-identifier="flashcard"
+                disabled={disabled}
+                onClick={openCard}
+                status={status}
+            >
                 <span data-identifier="flashcard-index-item">Pergunta {number}</span>
                 <Icone
                     alt={status ? ((status === "error") ? "Não lembrei" : ((status === "almost") ? "Quase não lembrei" : "Zap!")) : "Abrir"}
                     data-identifier={status ? "flashcard-status" : "flashcard-show-btn"}
-                    disabled={disabled}
-                    onClick={openCard}
                     src={status ? ((status === "error") ? error : ((status === "almost") ? almost : zap)) : openIcon}
                 />
             </FlashcardContainer>
@@ -76,7 +79,6 @@ const FlashcardContainer = styled.div`
     background-color: white;
     border-radius: 5px;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
-    color: var(--preto);
     display: flex;
     font-family: 'Recursive', cursive;
     font-weight: 700;
@@ -85,6 +87,7 @@ const FlashcardContainer = styled.div`
     margin: 20px 0px;
     padding: 10px 15px;
     width: 300px;
+    ${({disabled}) => disabled ? "" : "cursor: pointer;"}
     ${({status}) => {
         switch (status) {
             case "error":
@@ -97,7 +100,7 @@ const FlashcardContainer = styled.div`
                 return `color: var(--cor-zap);
                         text-decoration: line-through;`;
             default:
-                return "color: black";
+                return "color: var(--preto)";
         }
     }}
 
@@ -136,5 +139,4 @@ const FlashcardOpenContainer = styled(FlashcardContainer)`
 
 const Icone = styled.img`
     width: 28px;
-    ${({disabled}) => disabled ? "" : "cursor: pointer;"}
 `;
